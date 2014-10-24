@@ -2,6 +2,7 @@
 <html prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#">
   <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="http://faviconist.com/icons/4aaac6de9b2cd53a6c5205ea4a1535f3/favicon.ico" />
     <title>
       {% if is_login %}Login
       {% elif is_home %}{{ site.author }}
@@ -238,7 +239,10 @@
 
         <h1>{{ page.title }}</h1>
         <div class="post-content" data-type-cleanup="true">
-          {{ page.content }}
+          {% set article = page.content|replace('<div>','') %}
+          {% set article = article|replace('</div>','') %}
+          {% set article = article|replace('<br/>','') %}
+          {{ article }}
         </div>
         <div class="pagination">
           <a href="javascript:history.go(-1)" class="prev">&laquo; Back To List</a>
