@@ -160,6 +160,13 @@
 
         <div class="post-content">
           <h1>{{ post.title }}</h1>
+          {% if post.tags %}
+          <ul class="post-tags">
+          {% for tag in post.tags %}
+            <li><a href="/tag/{{ tag }}">{{ tag }}</a></li>
+          {% endfor %}
+          </ul>
+          {% endif %}
           <div data-type-cleanup="true">
             {{ post.content }}
             {% if post.type == 'link' or post.type == 'webclip' %}
